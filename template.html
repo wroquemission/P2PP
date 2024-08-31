@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path to Pera Pera</title>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        div#navigator-title {
+            width: 100%;
+            font-family: arial;
+            font-size: 2.1em;
+            text-align: center;
+            font-weight: 1000;
+            -webkit-text-stroke-color: #1397ac;
+            -webkit-text-stroke-width: .06em;
+            color: white;
+            background: #31b9ce;
+            padding: 1em 0;
+            box-sizing: border-box;
+            border-bottom: solid .2em #117b8c;
+            margin: 0;
+            padding-bottom: 1.2em;
+        }
+
+        div#navigator {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigator-container {
+            margin: 0;
+            padding: 1em;
+            font-family: Roboto, 'sans-serif';
+            font-size: 1.2em;
+            padding-top: 5em;
+            padding-bottom: 4.3em;
+        }
+
+        h2.navigator-header {
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            margin-bottom: 1.3em;
+            font-weight: 500;
+        }
+
+        div#section-1 {
+            background: #e7cbab;
+            color: #84614d;
+            border-bottom: solid .3em #6c574b;
+        }
+
+        div#section-2 {
+            background: #75d481;
+            color: #2f6536;
+            border-bottom: solid .3em #497240;
+        }
+
+        div#section-3 {
+            background: #57955f;
+            color: #bee8c3;
+            border-bottom: solid .3em #71b77a;
+        }
+
+        div#section-4 {
+            background: #7caaac;
+            color: #eee;
+            border-bottom: solid .3em #b7c2d9;
+        }
+
+        div#section-5 {
+            background: #555555;
+            color: #d7d7d7;
+            border-bottom: solid .3em #73a3b1;
+        }
+
+        div#section-6 {
+            background: #fffef4;
+            color: #777777;
+            border-bottom: solid .3em #b5b5b5;
+        }
+
+        .image-wrapper {
+            margin: 0;
+            height: 5em;
+            width: 100%;
+            padding: 0;
+            position: absolute;
+            transform: translateY(-3em);
+            pointer-events: none;
+        }
+
+        .sakura-multiple {
+            transform: translateY(1em);
+        }
+
+        .sakura-single {
+            transform: translate(-0.5em, -3.5em) scale(.85);
+        }
+
+        .navigator-container .sakura-multiple {
+            transform: translate(-1em, 1em) scale(.85);
+        }
+
+        .shovel {
+            height: 14em;
+            transform: translateY(2em);
+            padding-bottom: 4em;
+        }
+
+        .progress-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            justify-content: center;
+            padding: 1em 0;
+        }
+
+        .progress-bubble, .final-bubble {
+            min-width: 1em;
+            min-height: 1em;
+            background: transparent;
+            border: solid .2em #f4e5e6;
+            border-radius: 100%;
+            display: inline-block;
+            cursor: pointer;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .progress-bubble-filled {
+            background: #f4e5e6;
+        }
+
+        .final-bubble {
+            border-radius: 15% !important;
+        }
+
+        .progress-connector {
+            width: 2.3em;
+            height: .2em;
+            background: #f4e5e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(.6em);
+        }
+
+        .hide {
+            display: none !important;
+        }
+
+        #content {
+            margin: 0;
+            padding: 0 2em;
+            padding-top: 5em;
+            padding-bottom: 8em;
+            font-family: Roboto, sans-serif;
+        }
+
+        h1.content-header {
+            font-size: 2em;
+            color: #5f5f5f;
+        }
+
+        h2.content-header {
+            font-size: 1.4em;
+            color: #e98d8d;
+        }
+
+        p.content-paragraph {
+            font-size: 1.2em;
+            color: #3b3b3b;
+            line-height: 1.5em;
+        }
+
+        #content-back-button {
+            position: fixed;
+            left: .9em;
+            top: .9em;
+            background: #535353;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6em;
+            box-sizing: border-box;
+            width: 2em;
+            height: 2em;
+            font-family: Roboto, 'sans-serif';
+            color: #f0f0f0;
+            border-radius: 10%;
+        }
+
+        ul.content-list {
+            font-size: 1.2em;
+            color: #3b3b3b;
+        }
+
+        ul.content-list ul {
+            font-size: 1em;
+        }
+
+        #content .progress-wrapper .progress-bubble {
+            border-color: #9e9e9e;
+            min-width: 1.3em;
+            min-height: 1.3em;
+        }
+
+        #content .progress-wrapper .progress-bubble-filled {
+            background: #9e9e9e;
+        }
+
+        #content .progress-wrapper .progress-connector {
+            background: #9e9e9e;
+            width: 3em;
+            transform: translateY(.7em);
+        }
+
+        #content .progress-wrapper .final-bubble {
+            border-color: #9e9e9e;
+            min-width: 1.3em;
+            min-height: 1.3em;
+        }
+
+        div#language-selector {
+            background: #535353;
+            position: fixed;
+            bottom: 2em;
+            display: flex;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: .8em;
+            border-radius: .4em;
+        }
+
+        .language-option {
+            padding: .6em;
+            font-family: Roboto, 'sans-serif';
+            color: #ccc;
+            border-radius: .4em;
+        }
+
+        .active-language-option {
+            background: #949494;
+        }
+    </style>
+    
+    </head>
+    
+    <body>
+        <div id="navigator">
+            <div id="navigator-title">PATH to ペラペラ</div>
+        </div>
+    
+        <div id="content" class="hide"></div>
+        <div id="content-back-button" class="hide">&#x276C</div>
+
+        <div id="language-selector"></div>
+    
+        <script>
+            const data = DATA;
+            const images = IMAGES;
+
+            const navigatorElement = document.querySelector('#navigator');
+            const contentElement = document.querySelector('#content');
+            const backButton = document.querySelector('#content-back-button');
+            const languageSelector = document.querySelector('#language-selector');
+
+            let currentSection, navigatorScroll;
+
+            backButton.addEventListener('click', () => {
+                contentElement.classList.add('hide');
+                backButton.classList.add('hide');
+                navigatorElement.classList.remove('hide');
+
+                if (navigatorScroll) {
+                    window.scrollTo(0, navigatorScroll);
+                }
+
+                currentSection = undefined;
+            }, false);
+
+            function addImage(label, element) {
+                const imageWrapper = document.createElement('div');
+                imageWrapper.innerHTML = images[label];
+                imageWrapper.classList.add(label);
+                imageWrapper.classList.add('image-wrapper');
+
+                element.appendChild(imageWrapper);
+            }
+
+            function createBubbles(containerElement, i, j) {
+                const progressWrapper = document.createElement('div');
+                progressWrapper.classList.add('progress-wrapper');
+                progressWrapper.classList.add(`progress-${i}-${j}`);
+
+                for (let x = 0; x < 5; x++) {
+                    const progressBubble = document.createElement('div');
+                    progressBubble.classList.add('progress-bubble');
+                    progressBubble.classList.add(`progress-bubble-${i}-${j}-${x}`);
+
+                    const progress = parseInt(localStorage.getItem(`${i}-${j}`));
+
+                    if (x < progress) {
+                        progressBubble.classList.add('progress-bubble-filled');
+                    }
+
+                    progressWrapper.appendChild(progressBubble);
+
+                    progressBubble.addEventListener('click', () => {
+                        const progress = parseInt(localStorage.getItem(`${i}-${j}`));
+                        let newProgress = x + 1;
+
+                        if (progress === x + 1) {
+                            newProgress = 0;
+                        }
+
+                        localStorage.setItem(`${i}-${j}`, newProgress);
+
+                        for (let y = 0; y < 5; y++) {
+                            const bubbles = document.querySelectorAll(`.progress-bubble-${i}-${j}-${y}`);
+
+                            bubbles.forEach(bubble => {
+                                if (y < newProgress) {
+                                    bubble.classList.add('progress-bubble-filled');
+                                } else {
+                                    bubble.classList.remove('progress-bubble-filled');
+                                }
+                            });
+                        }
+                    }, false);
+
+                    if (x === 4) {
+                        progressBubble.classList.add('final-bubble');
+                    } else {
+                        const progressConnector = document.createElement('div');
+                        progressConnector.classList.add('progress-connector');
+                        progressWrapper.appendChild(progressConnector);
+                    }
+                }
+
+                containerElement.appendChild(progressWrapper);
+            }
+
+            function generateContent(data, level = 1) {
+                let content = '';
+
+                data.forEach(item => {
+                    switch (item.type) {
+                        case 'paragraph':
+                            content += `<p class="content-paragraph">${item.content}</p>`;
+                            break;
+                        case 'header':
+                            content += `<h${level} class="content-header">${item.content}</h${level}>`;
+                            break;
+                        case 'list':
+                            content += `<ul class="content-list">${generateContent(item.content, level)}</ul>`;
+                            break;
+                        case 'item':
+                            let element = '<li class="content-list-item">{}</li>';
+
+                            let [first, ...rest] = item.content.split('\n\n\n');
+
+                            if (rest.length > 0) {
+                                let innerList = [];
+
+                                rest.forEach(listItem => {
+                                    innerList.push({ 'type': 'item', 'content': listItem });
+                                });
+
+                                content += element.replace('{}', first + generateContent(
+                                    [{ 'type': 'list', 'content': innerList }],
+                                    level
+                                ))
+                            } else {
+                                content += element.replace('{}', first);
+                            }
+                            break;
+                        case 'section':
+                            content += `<div class="content-section">${generateContent(item.content, level + 1)}</div>`;
+                            break;
+                    }
+                });
+
+                return content
+            }
+
+            function renderNavigator(data) {
+                Object.keys(data).forEach((header, i) => {
+                    addImage('torii-gate', navigatorElement);
+                    addImage('sakura-multiple', navigatorElement);
+
+                    const containerElement = document.createElement('div');
+                    containerElement.classList.add('navigator-container')
+                    containerElement.setAttribute('id', `section-${i + 1}`)
+
+                    const headerElement = document.createElement('h2');
+                    headerElement.classList.add('navigator-header');
+                    headerElement.innerText = header;
+                    containerElement.appendChild(headerElement);
+
+                    addImage('sakura-single', containerElement);
+
+                    data[header].forEach((section, j) => {
+                        const sectionTitle = section['content'][0]['content'];
+                        const sectionTitleElement = document.createElement('h3');
+                        sectionTitleElement.innerHTML = '&#9656; ' + sectionTitle;
+
+                        sectionTitleElement.addEventListener('click', () => {
+                            contentElement.innerHTML = generateContent(section.content);
+
+                            currentSection = [i, j];
+
+                            createBubbles(contentElement, i, j);
+
+                            navigatorScroll = window.scrollY;
+                            window.scrollTo(0, 0);
+
+                            contentElement.classList.remove('hide');
+                            backButton.classList.remove('hide');
+                            navigatorElement.classList.add('hide');
+                        }, false);
+
+                        containerElement.appendChild(sectionTitleElement);
+
+                        createBubbles(containerElement, i, j);
+                    });
+
+                    addImage('sakura-multiple', containerElement);
+
+                    navigatorElement.appendChild(containerElement);
+                });
+
+                addImage('torii-gate', navigatorElement);
+                addImage('sakura-multiple', navigatorElement);
+
+                addImage('shovel', navigatorElement)
+            }
+
+            const languages = Object.keys(data);
+            let currentLanguage = localStorage.getItem('current-language') || languages[0];
+
+            renderNavigator(data[currentLanguage]);
+
+            languages.forEach((language, i) => {
+                const languageElement = document.createElement('div');
+                languageElement.classList.add('language-option');
+                languageElement.innerText = language.toUpperCase();
+
+                if (i === languages.indexOf(currentLanguage)) {
+                    languageElement.classList.add('active-language-option');
+                }
+
+                languageSelector.appendChild(languageElement);
+
+                languageElement.addEventListener('click', () => {
+                    const lastOption = document.querySelector('.active-language-option');
+
+                    lastOption.classList.remove('active-language-option');
+                    languageElement.classList.add('active-language-option');
+
+                    currentLanguage = language;
+                    localStorage.setItem('current-language', language);
+
+                    if (currentSection) {
+                        contentElement.innerHTML = generateContent(
+                            Object.values(
+                                data[currentLanguage]
+                            )[currentSection[0]][currentSection[1]].content
+                        );
+                    }
+
+                    while (navigatorElement.childNodes.length > 2) {
+                        navigatorElement.childNodes[2].remove();
+                    }
+                    renderNavigator(data[currentLanguage]);
+                }, false);
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,60 @@
+[
+    {
+        "type": "section",
+        "content": [
+            {
+                "type": "header",
+                "content": "Perguntas da entrevista batismal"
+            },
+            {
+                "type": "paragraph",
+                "content": "As perguntas da entrevista batismal são as seguintes:"
+            },
+            {
+                "type": "list",
+                "content": [
+                    {
+                        "type": "item",
+                        "content": "Você acredita que Deus é o nosso Pai Eterno? Você acredita que Jesus Cristo é o Filho de Deus, o Salvador e Redentor do mundo?"
+                    },
+                    {
+                        "type": "item",
+                        "content": "Você acredita que a Igreja e o evangelho de Jesus Cristo foram restaurados por intermédio do profeta Joseph Smith? Você acredita que [o presidente atual da Igreja] é um profeta de Deus? O que isso significa para você?"
+                    },
+                    {
+                        "type": "item",
+                        "content": "O que o arrependimento significa para você? Você sente que se arrependeu dos pecados que cometeu?"
+                    },
+                    {
+                        "type": "item",
+                        "content": "Você aprendeu que, para ser membro de A Igreja de Jesus Cristo dos Santos dos Últimos Dias, é preciso seguir os padrões do evangelho. O que você compreende a respeito dos seguintes padrões? Está disposto a segui-los?\n\n\nA lei da castidade, que proíbe toda relação sexual fora dos laços do casamento legal entre um homem e uma mulher\n\n\nA lei do dízimo\n\n\nA Palavra de Sabedoria\n\n\nSantificar o Dia do Senhor, o que inclui tomar o sacramento semanalmente e servir ao próximo"
+                    },
+                    {
+                        "type": "item",
+                        "content": "Você já cometeu algum crime grave? Em caso afirmativo, você está no momento em liberdade condicional?"
+                    },
+                    {
+                        "type": "item",
+                        "content": "Você já participou de um aborto induzido? (Ver Manual Geral, item 38.6.1.)"
+                    },
+                    {
+                        "type": "item",
+                        "content": "Quando você é batizado, você faz convênio com Deus de que está disposto a tomar sobre si o nome de Cristo, servir ao próximo, ser testemunha de Deus em todos os momentos e guardar Seus mandamentos por toda a vida. Você está preparado para fazer esse convênio e se empenhar em ser fiel a ele?"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "content": "Para obter instruções sobre o que fazer se a pessoa responder afirmativamente à pergunta 5 ou à pergunta 6, veja o Manual Geral, itens 38.2.8.7 e 38.2.8.8."
+            },
+            {
+                "type": "paragraph",
+                "content": "Familiarize-se com as normas e as diretrizes relacionadas ao batismo e à confirmação mencionadas no Manual Geral, item 38.2.8. Algumas dessas normas envolvem circunstâncias especiais com as quais você pode se deparar."
+            },
+            {
+                "type": "paragraph",
+                "content": "Depois da entrevista, o missionário e o candidato ao batismo se juntam novamente aos outros missionários. Se a pessoa estiver pronta para o batismo, os missionários explicam o que acontecerá na reunião batismal. Eles explicam também que normalmente a confirmação ocorre em uma reunião sacramental da ala em que a pessoa reside."
+            }
+        ]
+    }
+]
