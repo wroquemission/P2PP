@@ -5,7 +5,8 @@ IMAGES = {
     'sakura-single': 'Images/sakura_single.svg',
     'torii-gate': 'Images/torii_gate.svg',
     'shovel': 'Images/shovel.svg',
-    'link': 'Images/link.svg'
+    'link': 'Images/link.svg',
+    'logo': 'Images/logo.svg'
 }
 
 LABELS = {

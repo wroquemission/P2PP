@@ -16,19 +16,13 @@
 
         div#navigator-title {
             width: 100%;
-            font-family: arial;
             font-size: 2.1em;
-            text-align: center;
-            font-weight: 1000;
-            -webkit-text-stroke-color: #1397ac;
-            -webkit-text-stroke-width: .06em;
+            max-height: 5em;
             color: white;
             background: #31b9ce;
-            padding: 1em 0;
             box-sizing: border-box;
             border-bottom: solid .2em #117b8c;
             margin: 0;
-            padding-bottom: 1.2em;
         }
 
         div#navigator {
@@ -206,6 +200,7 @@
         ul.content-list {
             font-size: 1.2em;
             color: #3b3b3b;
+            line-height: 1.8em;
         }
 
         ul.content-list ul {
@@ -255,13 +250,20 @@
         .active-language-option {
             background: #949494;
         }
+
+        .logo.image-wrapper {
+            position: relative;
+            max-height: 5em !important;
+            margin: 0;
+            transform: translateY(-0.2em);
+        }
     </style>
     
     </head>
     
     <body>
         <div id="navigator">
-            <div id="navigator-title">PATH to ペラペラ</div>
+            <div id="navigator-title"></div>
         </div>
     
         <div id="content" class="hide"></div>
@@ -274,6 +276,7 @@
             const images = IMAGES;
 
             const navigatorElement = document.querySelector('#navigator');
+            const navigatorTitle = document.querySelector('#navigator-title');
             const contentElement = document.querySelector('#content');
             const backButton = document.querySelector('#content-back-button');
             const languageSelector = document.querySelector('#language-selector');
@@ -300,6 +303,8 @@
 
                 element.appendChild(imageWrapper);
             }
+
+            addImage('logo', navigatorTitle);
 
             function createBubbles(containerElement, i, j) {
                 const progressWrapper = document.createElement('div');
